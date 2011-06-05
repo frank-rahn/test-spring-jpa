@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import de.rahn.validation.NotNullOrBlank;
 
 /**
  * Die Klasse eines Fahrers.
@@ -36,10 +40,13 @@ public class Driver {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DriverSEQ")
 	@SequenceGenerator(name = "DriverSEQ", sequenceName = "DriverSEQ", schema = "rahn")
 	@Basic(optional = false)
+	@NotNull
 	private Long id;
 
 	/** Der Name des Fahrers. */
 	@Basic(optional = false)
+	@Column(nullable = false, unique = true)
+	@NotNullOrBlank
 	private String name;
 
 	/** Der Vorname des Fahrers. */
