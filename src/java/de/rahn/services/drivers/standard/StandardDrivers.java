@@ -1,5 +1,7 @@
 package de.rahn.services.drivers.standard;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -23,6 +25,16 @@ public class StandardDrivers implements Drivers {
 
 	/**
 	 * {@inheritDoc}
+	 * @see de.rahn.services.drivers.Drivers#getDrivers()
+	 */
+	@Override
+	@Transactional(propagation = Propagation.SUPPORTS)
+	public List<Driver> getDrivers() {
+		return driverDAO.findAll();
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see de.rahn.services.drivers.Drivers#getDriver(java.lang.String)
 	 */
 	@Override
@@ -42,6 +54,25 @@ public class StandardDrivers implements Drivers {
 		driver.setFirstname(firstname);
 
 		return driverDAO.create(driver);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see de.rahn.services.drivers.Drivers#create(de.rahn.services.drivers.entity.Driver)
+	 */
+	@Override
+	public Long create(Driver driver) {
+		return driverDAO.create(driver);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see de.rahn.services.drivers.Drivers#save(de.rahn.services.drivers.entity.Driver)
+	 */
+	@Override
+	public Driver save(Driver driver) {
+		driverDAO.save(driver);
+		return driver;
 	}
 
 	/**
