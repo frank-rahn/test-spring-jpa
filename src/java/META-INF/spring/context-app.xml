@@ -11,10 +11,10 @@
 	<description>Dieses ist die zentrale Konfiguration für die Anwendungen.</description>
 
 	<!-- Enabling des AspectJ Support -->
-	<aop:aspectj-autoproxy />
+	<aop:aspectj-autoproxy proxy-target-class="true" />
 
 	<!-- Das Verwenden von allgemeinen Annotationen ermöglichen -->
-	<context:annotation-config/>
+	<context:annotation-config />
 
 	<!-- Die projektspezifischen Konfigurationen laden -->
 	<import resource="db.xml" />

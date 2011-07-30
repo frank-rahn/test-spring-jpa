@@ -29,6 +29,6 @@
 		p:entityManagerFactory-ref="entityManagerFactory" />
 
 	<!-- Das Verwenden von Annotationen für die Transaktionen ermöglichen -->
-	<tx:annotation-driven />
+	<tx:annotation-driven proxy-target-class="true" />
 
 </beans>
