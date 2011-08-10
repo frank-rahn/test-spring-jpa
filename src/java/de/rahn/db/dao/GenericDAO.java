@@ -3,7 +3,7 @@ package de.rahn.db.dao;
 import java.io.Serializable;
 
 /**
- * Ein generische DAO-Schnittestelle für eine Entität mit einem primären Key.
+ * Ein generische DAO-Schnittstelle für eine Entität mit einem primären Key.
  * @author Frank W. Rahn
  * @param <Entity> Die Klasse der Entität
  * @param <PrimaryKey> Die Klasse des primären Key

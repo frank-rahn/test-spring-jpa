@@ -13,7 +13,7 @@
 
 	<!-- Starte die HSQL-Datenbank im Memory -->
 	<jdbc:embedded-database id="dataSource" type="HSQL">
-		<jdbc:script location="/META-INF/spring/init.sql" />
+		<jdbc:script location="classpath:/META-INF/spring/init.sql" />
 	</jdbc:embedded-database>
 
 	<!-- Erzeuge die Persitence-Unit -->
@@ -29,6 +29,6 @@
 		p:entityManagerFactory-ref="entityManagerFactory" />
 
 	<!-- Das Verwenden von Annotationen für die Transaktionen ermöglichen -->
-	<tx:annotation-driven />
+	<tx:annotation-driven proxy-target-class="true" />
 
 </beans>
