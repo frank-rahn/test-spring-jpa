@@ -30,7 +30,7 @@ import de.rahn.validation.NotNullOrBlank;
 @Entity
 @Table(schema = "rahn")
 @Access(AccessType.FIELD)
-@NamedQueries(@NamedQuery(name = Driver.FIND_ALL, query = "select d from Driver d"))
+@NamedQueries(@NamedQuery(name = Driver.FIND_ALL, query = "from Driver d"))
 public class Driver {
 
 	/** Konstante für die NamedQuery. */
@@ -39,14 +39,15 @@ public class Driver {
 	/** Der Identifizierer des Fahrers. */
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DriverSEQ")
-	@SequenceGenerator(name = "DriverSEQ", sequenceName = "DriverSEQ", schema = "rahn")
+	@SequenceGenerator(name = "DriverSEQ", sequenceName = "DriverSEQ",
+		schema = "rahn")
 	@Basic(optional = false)
 	@NotNull
 	private Long id;
 
 	/** Der Name des Fahrers. */
 	@Basic(optional = false)
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	@NotNullOrBlank
 	private String name;
 
@@ -59,7 +60,7 @@ public class Driver {
 	@JoinColumn(name = "driver_id", nullable = false)
 	private Set<Car> cars = new HashSet<Car>();
 
-	// Ab hier von Eclipse generierte Methoden hashCode(), equals(), toString(), Setter und Getter
+	// Ab hier von Eclipse generierte Methoden hashCode(), equals(), toString()
 
 	/**
 	 * @see java.lang.Object#hashCode()
@@ -73,7 +74,8 @@ public class Driver {
 		} else {
 			result = prime * result;
 		}
-		result = prime * result + (firstname == null ? 0 : firstname.hashCode());
+		result =
+			prime * result + (firstname == null ? 0 : firstname.hashCode());
 		result = prime * result + (id == null ? 0 : id.hashCode());
 		result = prime * result + (name == null ? 0 : name.hashCode());
 		return result;
@@ -99,7 +101,8 @@ public class Driver {
 				return false;
 			}
 		} else {
-			if (Persistence.getPersistenceUtil().isLoaded(cars) && Persistence.getPersistenceUtil().isLoaded(other.cars)) {
+			if (Persistence.getPersistenceUtil().isLoaded(cars)
+				&& Persistence.getPersistenceUtil().isLoaded(other.cars)) {
 				if (!cars.equals(other.cars)) {
 					return false;
 				}
@@ -134,9 +137,12 @@ public class Driver {
 	 */
 	@Override
 	public String toString() {
-		return new StringBuilder().append("Driver [id=").append(id).append(", name=").append(name).append(", firstname=")
+		return new StringBuilder().append("Driver [id=").append(id)
+			.append(", name=").append(name).append(", firstname=")
 			.append(firstname).append("]").toString();
 	}
+
+	// Ab hier von Eclipse generierte Setter und Getter
 
 	/**
 	 * @return the id

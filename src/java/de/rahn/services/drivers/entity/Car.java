@@ -25,7 +25,8 @@ public class Car {
 	@Basic(optional = false)
 	private String type;
 
-	// Ab hier von Eclipse generierte Methoden hashCode(), equals(), toString(), Setter und Getter
+	// Ab hier von Eclipse generierte Methoden hashCode(), equals(), toString(),
+	// Setter und Getter
 
 	/**
 	 * @see java.lang.Object#hashCode()
@@ -77,7 +78,8 @@ public class Car {
 	 */
 	@Override
 	public String toString() {
-		return new StringBuilder().append("Car [id=").append(id).append(", type=").append(type).append("]").toString();
+		return new StringBuilder().append("Car [id=").append(id)
+			.append(", type=").append(type).append("]").toString();
 	}
 
 	/**

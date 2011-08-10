@@ -46,7 +46,7 @@ public interface Drivers {
 	Driver save(Driver driver);
 
 	/**
-	 * Füge ein Auto zum Fahrer hinzu
+	 * Füge ein Auto zum Fahrer hinzu.
 	 * @param id die Id des Fahrers
 	 * @param car das Auto
 	 * @return der komplette Fahrer

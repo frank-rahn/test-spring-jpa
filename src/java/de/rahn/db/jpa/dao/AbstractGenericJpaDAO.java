@@ -9,7 +9,7 @@ import de.rahn.db.dao.AbstractGenericDAO;
 import de.rahn.db.dao.GenericDAO;
 
 /**
- * Eine Implementierung der Schnittstelle {@link GenericDAO} für JPA.
+ * Eine Implementierung der Schnittstelle {@link GenericJpaDAO} für JPA.
  * @author Frank W. Rahn
  * @param <Entity> Die Klasse der Entität
  * @param <PrimaryKey> Die Klasse des primären Key
