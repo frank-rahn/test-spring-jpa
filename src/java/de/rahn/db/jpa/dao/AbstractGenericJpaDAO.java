@@ -9,14 +9,15 @@ import de.rahn.db.dao.AbstractGenericDAO;
 import de.rahn.db.dao.GenericDAO;
 
 /**
- * Eine Implementierung der Schnittstelle {@link GenericDAO} für JPA.
+ * Eine Implementierung der Schnittstelle {@link GenericJpaDAO} für JPA.
  * @author Frank W. Rahn
  * @param <Entity> Die Klasse der Entität
  * @param <PrimaryKey> Die Klasse des primären Key
  * @see de.rahn.db.dao.AbstractGenericDAO
  */
-public abstract class AbstractGenericJpaDAO<Entity, PrimaryKey extends Serializable> extends
-	AbstractGenericDAO<Entity, PrimaryKey> implements GenericJpaDAO<Entity, PrimaryKey> {
+public abstract class AbstractGenericJpaDAO<Entity, PrimaryKey extends Serializable>
+	extends AbstractGenericDAO<Entity, PrimaryKey> implements
+	GenericJpaDAO<Entity, PrimaryKey> {
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -30,7 +31,7 @@ public abstract class AbstractGenericJpaDAO<Entity, PrimaryKey extends Serializa
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.db.dao.GenericDAO#create(java.lang.Object)
+	 * @see GenericDAO#create(java.lang.Object)
 	 */
 	@Override
 	public PrimaryKey create(Entity newPersistentObject) {
@@ -40,7 +41,7 @@ public abstract class AbstractGenericJpaDAO<Entity, PrimaryKey extends Serializa
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.db.dao.GenericDAO#save(java.lang.Object)
+	 * @see GenericDAO#save(java.lang.Object)
 	 */
 	@Override
 	public void save(Entity persistentObject) {
@@ -49,7 +50,7 @@ public abstract class AbstractGenericJpaDAO<Entity, PrimaryKey extends Serializa
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.db.dao.GenericDAO#remove(java.lang.Object)
+	 * @see GenericDAO#remove(java.lang.Object)
 	 */
 	@Override
 	public void remove(Entity persistentObject) {
@@ -58,7 +59,7 @@ public abstract class AbstractGenericJpaDAO<Entity, PrimaryKey extends Serializa
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.db.dao.GenericDAO#findByPrimaryKey(java.io.Serializable)
+	 * @see GenericDAO#findByPrimaryKey(java.io.Serializable)
 	 */
 	@Override
 	public Entity findByPrimaryKey(PrimaryKey key) {
