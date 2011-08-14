@@ -19,7 +19,8 @@ import de.rahn.services.drivers.entity.Driver;
  * @author Frank W. Rahn
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/META-INF/spring/context-test.xml", "../drivers.xml" })
+@ContextConfiguration(locations = { "/META-INF/spring/context-test.xml",
+	"../drivers.xml" })
 @Transactional
 public class DriverDAOTest {
 
@@ -27,7 +28,7 @@ public class DriverDAOTest {
 	private DriverDAO driverDAO;
 
 	/**
-	 * Test method for {@link DriverDAO#getPrimaryKey(de.rahn.services.drivers.entity.Driver)}.
+	 * Test method for {@link DriverDAO#getPrimaryKey(Driver)}.
 	 */
 	@Test
 	public void testGetPrimaryKey() {
@@ -53,7 +54,8 @@ public class DriverDAOTest {
 	}
 
 	/**
-	 * Test method for {@link de.rahn.db.jpa.dao.AbstractGenericJpaDAO#create(java.lang.Object)}.
+	 * Test method for
+	 * {@link de.rahn.db.jpa.dao.AbstractGenericJpaDAO#create(Object)}.
 	 */
 	@Test
 	public void testCreate() {
@@ -71,7 +73,8 @@ public class DriverDAOTest {
 	}
 
 	/**
-	 * Test method for {@link de.rahn.db.jpa.dao.AbstractGenericJpaDAO#save(java.lang.Object)}.
+	 * Test method for
+	 * {@link de.rahn.db.jpa.dao.AbstractGenericJpaDAO#save(Object)}.
 	 */
 	@Test
 	public void testSave() {
@@ -87,7 +90,8 @@ public class DriverDAOTest {
 	}
 
 	/**
-	 * Test method for {@link de.rahn.db.jpa.dao.AbstractGenericJpaDAO#remove(java.lang.Object)}.
+	 * Test method for
+	 * {@link de.rahn.db.jpa.dao.AbstractGenericJpaDAO#remove(Object)}.
 	 */
 	@Test
 	public void testRemoveEntity() {
@@ -102,7 +106,9 @@ public class DriverDAOTest {
 	}
 
 	/**
-	 * Test method for {@link de.rahn.db.jpa.dao.AbstractGenericJpaDAO#findByPrimaryKey(java.io.Serializable)}.
+	 * Test method for
+	 * {@link de.rahn.db.jpa.dao.AbstractGenericJpaDAO#findByPrimaryKey(Serializable)}
+	 * .
 	 */
 	@Test
 	public void testFindByPrimaryKey() {
@@ -113,7 +119,8 @@ public class DriverDAOTest {
 	}
 
 	/**
-	 * Test method for {@link de.rahn.db.dao.AbstractGenericDAO#remove(java.io.Serializable)}.
+	 * Test method for
+	 * {@link de.rahn.db.dao.AbstractGenericDAO#remove(Serializable)}.
 	 */
 	@Test
 	public void testRemovePrimaryKey() {

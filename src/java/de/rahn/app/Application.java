@@ -13,7 +13,7 @@ import de.rahn.services.drivers.entity.Car;
 import de.rahn.services.drivers.entity.Driver;
 
 /**
- * Die Anwendung zum Aufrufen des Taschenrechners.
+ * Die Anwendung zum Aufrufen der Fahrerverwaltung.
  * @author Frank W. Rahn
  */
 @Component
@@ -26,7 +26,7 @@ public class Application implements Runnable {
 
 	/**
 	 * {@inheritDoc}
-	 * @see java.lang.Runnable#run()
+	 * @see Runnable#run()
 	 */
 	@Override
 	public void run() {
