@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import de.rahn.db.dao.GenericDAO;
 import de.rahn.db.jpa.dao.AbstractGenericJpaDAO;
 import de.rahn.services.drivers.entity.Driver;
 
@@ -18,7 +19,7 @@ public class DriverDAO extends AbstractGenericJpaDAO<Driver, Long> {
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.db.dao.GenericDAO#getPrimaryKey(java.lang.Object)
+	 * @see GenericDAO#getPrimaryKey(java.lang.Object)
 	 */
 	@Override
 	public Long getPrimaryKey(Driver persistentObject) {
@@ -30,7 +31,8 @@ public class DriverDAO extends AbstractGenericJpaDAO<Driver, Long> {
 	 * @return alle Fahrer
 	 */
 	public List<Driver> findAll() {
-		return getEntityManager().createNamedQuery(Driver.FIND_ALL, Driver.class).getResultList();
+		return getEntityManager().createNamedQuery(Driver.FIND_ALL,
+			Driver.class).getResultList();
 	}
 
 }

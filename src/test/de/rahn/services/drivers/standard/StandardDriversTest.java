@@ -20,7 +20,8 @@ import de.rahn.services.drivers.entity.Driver;
  * @author Frank W. Rahn
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/META-INF/spring/context-test.xml", "../drivers.xml" })
+@ContextConfiguration(locations = { "/META-INF/spring/context-test.xml",
+	"../drivers.xml" })
 @Transactional
 public class StandardDriversTest {
 
@@ -34,7 +35,7 @@ public class StandardDriversTest {
 	private Drivers drivers;
 
 	/**
-	 * Test method for {@link StandardDrivers#getDriver(java.lang.Long)}.
+	 * Test method for {@link StandardDrivers#getDriver(Long)}.
 	 */
 	@Test
 	public void testGetDriver() {
@@ -45,7 +46,7 @@ public class StandardDriversTest {
 	}
 
 	/**
-	 * Test method for {@link StandardDrivers#createDriver(java.lang.String, java.lang.String)}.
+	 * Test method for {@link StandardDrivers#createDriver(String, String)}.
 	 */
 	@Test
 	public void testCreateDriver() {
@@ -60,7 +61,7 @@ public class StandardDriversTest {
 	}
 
 	/**
-	 * Test method for {@link StandardDrivers#addCarToDriver(java.lang.Long, de.rahn.services.drivers.entity.Car)}.
+	 * Test method for {@link StandardDrivers#addCarToDriver(Long, Car)}.
 	 */
 	@Test
 	public void testAddCarToDriver() {

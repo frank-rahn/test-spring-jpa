@@ -25,7 +25,7 @@ public class StandardDrivers implements Drivers {
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.services.drivers.Drivers#getDrivers()
+	 * @see Drivers#getDrivers()
 	 */
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS)
@@ -35,7 +35,7 @@ public class StandardDrivers implements Drivers {
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.services.drivers.Drivers#getDriver(java.lang.String)
+	 * @see Drivers#getDriver(Long)
 	 */
 	@Override
 	@Transactional(propagation = Propagation.SUPPORTS)
@@ -45,7 +45,7 @@ public class StandardDrivers implements Drivers {
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.services.drivers.Drivers#createDriver(java.lang.String, java.lang.String)
+	 * @see Drivers#createDriver(String, String)
 	 */
 	@Override
 	public Long createDriver(String name, String firstname) {
@@ -53,12 +53,12 @@ public class StandardDrivers implements Drivers {
 		driver.setName(name);
 		driver.setFirstname(firstname);
 
-		return driverDAO.create(driver);
+		return create(driver);
 	}
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.services.drivers.Drivers#create(de.rahn.services.drivers.entity.Driver)
+	 * @see Drivers#create(Driver)
 	 */
 	@Override
 	public Long create(Driver driver) {
@@ -67,7 +67,7 @@ public class StandardDrivers implements Drivers {
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.services.drivers.Drivers#save(de.rahn.services.drivers.entity.Driver)
+	 * @see Drivers#save(Driver)
 	 */
 	@Override
 	public Driver save(Driver driver) {
@@ -77,15 +77,14 @@ public class StandardDrivers implements Drivers {
 
 	/**
 	 * {@inheritDoc}
-	 * @see de.rahn.services.drivers.Drivers#addCarToDriver(java.lang.Long, de.rahn.services.drivers.entity.Car)
+	 * @see Drivers#addCarToDriver(Long, Car)
 	 */
 	@Override
 	public Driver addCarToDriver(Long id, Car car) {
 		Driver driver = driverDAO.findByPrimaryKey(id);
 		driver.getCars().add(car);
 
-		driverDAO.save(driver);
-		return driver;
+		return save(driver);
 	}
 
 }

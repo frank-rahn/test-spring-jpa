@@ -5,11 +5,18 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jdbc
+			http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/tx
+			http://www.springframework.org/schema/tx/spring-tx.xsd
+	">
 
-	<description>Dieses ist die zentrale Konfiguration für die Datenbank.</description>
+	<description>
+		Dieses ist die zentrale Konfiguration für die Datenbank.
+	</description>
 
 	<!-- Starte die HSQL-Datenbank im Memory -->
 	<jdbc:embedded-database id="dataSource" type="HSQL">
@@ -17,15 +24,18 @@
 	</jdbc:embedded-database>
 
 	<!-- Erzeuge die Persitence-Unit -->
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 		p:dataSource-ref="dataSource" p:persistenceUnitName="test-spring-drivers">
 		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" p:generateDdl="true" />
+			<bean p:generateDdl="true"
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>
 	</bean>
 
 	<!-- Einen Transaktionmanager erzeugen -->
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager"
 		p:entityManagerFactory-ref="entityManagerFactory" />
 
 	<!-- Das Verwenden von Annotationen für die Transaktionen ermöglichen -->
