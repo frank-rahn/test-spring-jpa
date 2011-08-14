@@ -1,9 +1,10 @@
 package de.rahn.app;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 import java.util.List;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,21 +13,20 @@ import de.rahn.services.drivers.entity.Car;
 import de.rahn.services.drivers.entity.Driver;
 
 /**
- * Die Anwendung zum Aufrufen des Taschenrechners.
+ * Die Anwendung zum Aufrufen der Fahrerverwaltung.
  * @author Frank W. Rahn
  */
 @Component
 public class Application implements Runnable {
 
-	private static final Logger logger = LoggerFactory
-		.getLogger(Application.class);
+	private static final Logger logger = getLogger(Application.class);
 
 	@Autowired(required = true)
 	private Drivers drivers;
 
 	/**
 	 * {@inheritDoc}
-	 * @see java.lang.Runnable#run()
+	 * @see Runnable#run()
 	 */
 	@Override
 	public void run() {
