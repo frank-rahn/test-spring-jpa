@@ -9,11 +9,12 @@ import de.rahn.validation.NotNullOrBlank;
  * Der Validator zur Annotation.
  * @author Frank W. Rahn
  */
-public class NotNullOrBlankValidator implements ConstraintValidator<NotNullOrBlank, String> {
+public class NotNullOrBlankValidator implements
+	ConstraintValidator<NotNullOrBlank, String> {
 
 	/**
 	 * {@inheritDoc}
-	 * @see javax.validation.ConstraintValidator#initialize(java.lang.annotation.Annotation)
+	 * @see ConstraintValidator#initialize(java.lang.annotation.Annotation)
 	 */
 	@Override
 	public void initialize(NotNullOrBlank constraintAnnotation) {
@@ -22,7 +23,7 @@ public class NotNullOrBlankValidator implements ConstraintValidator<NotNullOrBla
 
 	/**
 	 * {@inheritDoc}
-	 * @see javax.validation.ConstraintValidator#isValid(java.lang.Object, javax.validation.ConstraintValidatorContext)
+	 * @see ConstraintValidator#isValid(Object, ConstraintValidatorContext)
 	 */
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext context) {

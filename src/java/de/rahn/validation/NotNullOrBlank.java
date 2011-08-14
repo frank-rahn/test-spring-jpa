@@ -17,7 +17,8 @@ import javax.validation.Payload;
 import de.rahn.validation.constraints.NotNullOrBlankValidator;
 
 /**
- * Validiere String Felder, die nicht <code>null</code> oder aus einem Leerstring bestehen.
+ * Validiere String Felder, die nicht <code>null</code> oder aus einem
+ * Leerstring bestehen.
  * @author Frank W. Rahn
  */
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
