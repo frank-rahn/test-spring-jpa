@@ -27,7 +27,7 @@ public class NotNullOrBlankValidator implements
 	 */
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext context) {
-		return value != null && value.trim().length() >= 0;
+		return value != null && value.trim().length() > 0;
 	}
 
 }
