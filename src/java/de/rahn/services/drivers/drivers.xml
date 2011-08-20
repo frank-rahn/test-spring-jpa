@@ -14,10 +14,6 @@
 		Dieses ist die zentrale Konfiguration für den Service Drivers.
 	</description>
 
-	<!-- Definieren den Validator -->
-	<bean id="validator"
-		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-
 	<!-- Scanne das Package nach Spring Beans -->
 	<context:component-scan base-package="de.rahn.services.drivers" />
 
