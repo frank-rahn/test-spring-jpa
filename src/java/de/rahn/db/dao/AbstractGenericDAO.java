@@ -30,7 +30,7 @@ public abstract class AbstractGenericDAO<Entity, PrimaryKey extends Serializable
 		Class<?> clazz = getClass();
 		ParameterizedType parameterizedType = null;
 		while (parameterizedType == null
-			|| parameterizedType.getActualTypeArguments().length >= 2) {
+			|| parameterizedType.getActualTypeArguments().length < 2) {
 			Type type = clazz.getGenericSuperclass();
 
 			if (type instanceof ParameterizedType) {
