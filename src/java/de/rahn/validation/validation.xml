@@ -11,10 +11,14 @@
 	">
 
 	<description>
-		Dieses ist die zentrale Konfiguration für den Service Drivers.
+		Dieses ist die zentrale Konfiguration für die Validation.
 	</description>
 
-	<!-- Scanne das Package nach Spring Beans -->
-	<context:component-scan base-package="de.rahn.services.drivers" />
+	<!-- Definieren den Validator -->
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+	<!-- Scanne das Package nach den Validatoren -->
+	<context:component-scan base-package="de.rahn.validation" />
 
 </beans>

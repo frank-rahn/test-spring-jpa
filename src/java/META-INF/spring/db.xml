@@ -33,6 +33,10 @@
 		</property>
 	</bean>
 
+	<!-- Die Transformation der Ausnahmen -->
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"
+		p:proxyTargetClass="true" />
+
 	<!-- Einen Transaktionmanager erzeugen -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.jpa.JpaTransactionManager"
