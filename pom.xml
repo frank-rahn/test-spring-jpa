@@ -181,6 +181,18 @@
   		<version>4.8.2</version>
   		<scope>test</scope>
   	</dependency>
+  	<dependency>
+  		<groupId>org.easymock</groupId>
+  		<artifactId>easymock</artifactId>
+  		<version>3.0</version>
+  		<scope>test</scope>
+  		<exclusions>
+  			<exclusion>
+  				<artifactId>cglib-nodep</artifactId>
+  				<groupId>cglib</groupId>
+  			</exclusion>
+  		</exclusions>
+  	</dependency>
   </dependencies>
 
 </project>
