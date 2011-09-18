@@ -3,6 +3,7 @@ package de.rahn.services.drivers.standard;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +19,7 @@ import de.rahn.services.drivers.entity.Driver;
  */
 @Service("drivers")
 @Transactional
+@PreAuthorize("hasRole('ROLE_USER')")
 public class StandardDrivers implements Drivers {
 
 	@Autowired
@@ -48,6 +50,7 @@ public class StandardDrivers implements Drivers {
 	 * @see Drivers#createDriver(String, String)
 	 */
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Long createDriver(String name, String firstname) {
 		Driver driver = new Driver();
 		driver.setName(name);
@@ -61,6 +64,7 @@ public class StandardDrivers implements Drivers {
 	 * @see Drivers#create(Driver)
 	 */
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public Long create(Driver driver) {
 		return driverDAO.create(driver);
 	}

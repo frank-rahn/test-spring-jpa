@@ -27,9 +27,22 @@ public abstract class AbstractGenericDAO<Entity, PrimaryKey extends Serializable
 	protected final Class<PrimaryKey> primaryKeyClass;
 
 	{
-		ParameterizedType type =
-			(ParameterizedType) getClass().getGenericSuperclass();
-		Type[] actualTypeArguments = type.getActualTypeArguments();
+		Class<?> clazz = getClass();
+		ParameterizedType parameterizedType = null;
+		while (parameterizedType == null
+			|| parameterizedType.getActualTypeArguments().length < 2) {
+			Type type = clazz.getGenericSuperclass();
+
+			if (type instanceof ParameterizedType) {
+				parameterizedType = (ParameterizedType) type;
+				type = parameterizedType.getRawType();
+			}
+
+			if (type instanceof Class) {
+				clazz = (Class<?>) type;
+			}
+		}
+		Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
 
 		@SuppressWarnings("unchecked")
 		Class<Entity> entityClass = (Class<Entity>) actualTypeArguments[0];

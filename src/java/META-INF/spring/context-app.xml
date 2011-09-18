@@ -4,6 +4,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:sec="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans
 			http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -11,6 +12,8 @@
 			http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/context
 			http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/security
+			http://www.springframework.org/schema/security/spring-security.xsd
 	">
 
 	<description>
@@ -23,8 +26,26 @@
 	<!-- Das Verwenden von allgemeinen Annotationen ermöglichen -->
 	<context:annotation-config />
 
+	<!-- Verwenden des Load-Time-Weaver -->
+	<context:load-time-weaver aspectj-weaving="on" />
+
+	<!-- Den Authentifikationsmanager definieren -->
+	<sec:authentication-manager>
+		<sec:authentication-provider>
+			<sec:password-encoder hash="plaintext" />
+			<sec:user-service>
+				<sec:user name="admin" password="admin"
+					authorities="ROLE_USER, ROLE_ADMIN" />
+				<sec:user name="frank" password="frank"
+					authorities="ROLE_USER" />
+			</sec:user-service>
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+
 	<!-- Die projektspezifischen Konfigurationen laden -->
-	<import resource="db.xml" />
+	<import resource="classpath:/META-INF/spring/db.xml" />
+	<import resource="classpath:/META-INF/spring/security.xml" />
+	<import resource="classpath:/de/rahn/validation/validation.xml" />
 	<import resource="classpath:/de/rahn/services/drivers/drivers.xml" />
 	<import resource="classpath:/de/rahn/app/application.xml" />
 
