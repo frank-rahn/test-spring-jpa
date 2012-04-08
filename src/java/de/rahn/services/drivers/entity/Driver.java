@@ -20,6 +20,7 @@ import javax.persistence.Persistence;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import de.rahn.validation.NotNullOrBlank;
 
@@ -31,6 +32,7 @@ import de.rahn.validation.NotNullOrBlank;
 @Table(schema = "rahn")
 @Access(AccessType.FIELD)
 @NamedQueries(@NamedQuery(name = Driver.FIND_ALL, query = "from Driver d"))
+@XmlRootElement
 public class Driver {
 
 	/** Konstante für die NamedQuery. */
