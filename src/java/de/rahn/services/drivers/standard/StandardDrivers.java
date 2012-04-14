@@ -87,4 +87,14 @@ public class StandardDrivers implements Drivers {
 		return save(driver);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see Drivers#deleteDriver(Long)
+	 */
+	@Override
+	@Transactional
+	public void deleteDriver(Long id) {
+		driverDAO.remove(id);
+	}
+
 }
