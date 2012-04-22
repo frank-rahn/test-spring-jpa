@@ -6,6 +6,7 @@ import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Die Klasse eines Autos.
@@ -14,6 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(schema = "rahn")
 @Access(AccessType.FIELD)
+@XmlRootElement
 public class Car {
 
 	/** Die Identität eines angemeldeten Autos. */
