@@ -53,4 +53,10 @@ public interface Drivers {
 	 */
 	Driver addCarToDriver(Long id, Car car);
 
+	/**
+	 * Lösche den Fahrer.
+	 * @param id die Id eines Fahrers
+	 */
+	void deleteDriver(Long id);
+
 }

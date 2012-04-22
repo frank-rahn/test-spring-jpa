@@ -91,4 +91,14 @@ public class StandardDrivers implements Drivers {
 		return save(driver);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see Drivers#deleteDriver(Long)
+	 */
+	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public void deleteDriver(Long id) {
+		driverDAO.remove(id);
+	}
+
 }
