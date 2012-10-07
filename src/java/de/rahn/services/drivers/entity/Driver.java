@@ -53,7 +53,7 @@ public class Driver {
 	/** Die Autos die der Fahrer fährt. */
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "driver_id", nullable = false)
-	private Set<Car> cars = new HashSet<Car>();
+	private Set<Car> cars = new HashSet<>();
 
 	// Ab hier von Eclipse generierte Methoden hashCode(), equals(), toString()
 
