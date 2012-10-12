@@ -4,7 +4,8 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
+@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor", date = "2012-10-12T22:02:11.845+0200")
+@SuppressWarnings("all")
 @StaticMetamodel(Car.class)
 public abstract class Car_ {
 
