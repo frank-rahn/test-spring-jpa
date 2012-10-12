@@ -1,8 +1,11 @@
 package de.rahn.services.drivers.dao;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.sameInstance;
+import static org.junit.Assert.assertThat;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.junit.Test;
@@ -36,7 +39,7 @@ public class DriverDAOTest {
 		driver.setId(new Long(4711));
 
 		Long id = driverDAO.getPrimaryKey(driver);
-		assertEquals("Primärer Key unterschiedlich", driver.getId(), id);
+		assertThat("Primärer Key unterschiedlich", driver.getId(), is(id));
 	}
 
 	/**
@@ -45,12 +48,12 @@ public class DriverDAOTest {
 	@Test
 	public void testFindAll() {
 		List<Driver> drivers = driverDAO.findAll();
-		assertEquals("Anzahl der Treffer ungleich", 1, drivers.size());
+		assertThat("Anzahl der Treffer ungleich", drivers.size(), is(1));
 
 		Driver driver = drivers.get(0);
-		assertEquals("id ungleich", new Long(0), driver.getId());
-		assertEquals("firstname ungleich", "Martin", driver.getFirstname());
-		assertEquals("name ungleich", "Rahn", driver.getName());
+		assertThat("id ungleich", driver.getId(), is(0L));
+		assertThat("firstname ungleich", driver.getFirstname(), is("Martin"));
+		assertThat("name ungleich", driver.getName(), is("Rahn"));
 	}
 
 	/**
@@ -64,12 +67,12 @@ public class DriverDAOTest {
 		driver.setFirstname("Frank");
 
 		Long id = driverDAO.create(driver);
-		assertNotNull("keine id geliefert", id);
-		assertEquals("ungleiche id", id, driver.getId());
+		assertThat("keine id geliefert", id, notNullValue());
+		assertThat("ungleiche id", driver.getId(), is(id));
 
 		Driver driver2 = driverDAO.findByPrimaryKey(id);
-		assertNotNull("doch nicht gespeichert", driver2);
-		assertEquals("ungleicher Fahrer", driver, driver2);
+		assertThat("doch nicht gespeichert", driver2, notNullValue());
+		assertThat("ungleicher Fahrer", driver2, sameInstance(driver));
 	}
 
 	/**
@@ -79,14 +82,14 @@ public class DriverDAOTest {
 	@Test
 	public void testSave() {
 		Driver driver = driverDAO.findByPrimaryKey(0L);
-		assertNotNull("kein Fahrer gefunden", driver);
+		assertThat("kein Fahrer gefunden", driver, notNullValue());
 
 		driver.setFirstname("Peter");
 		driverDAO.save(driver);
 
 		Driver driver2 = driverDAO.findByPrimaryKey(0L);
-		assertNotNull("kein Fahrer gefunden", driver2);
-		assertEquals("ungleicher Fahrer", driver, driver2);
+		assertThat("kein Fahrer gefunden", driver2, notNullValue());
+		assertThat("ungleicher Fahrer", driver2, sameInstance(driver));
 	}
 
 	/**
@@ -96,13 +99,13 @@ public class DriverDAOTest {
 	@Test
 	public void testRemoveEntity() {
 		List<Driver> drivers = driverDAO.findAll();
-		assertEquals("Anzahl der Treffer ungleich", 1, drivers.size());
+		assertThat("Anzahl der Treffer ungleich", drivers.size(), is(1));
 		Driver driver = drivers.get(0);
 
 		driverDAO.remove(driver);
 
 		drivers = driverDAO.findAll();
-		assertEquals("Anzahl der Treffer ungleich", 0, drivers.size());
+		assertThat("Anzahl der Treffer ungleich", drivers.size(), is(0));
 	}
 
 	/**
@@ -113,9 +116,9 @@ public class DriverDAOTest {
 	@Test
 	public void testFindByPrimaryKey() {
 		Driver driver = driverDAO.findByPrimaryKey(0L);
-		assertEquals("id ungleich", new Long(0), driver.getId());
-		assertEquals("firstname ungleich", "Martin", driver.getFirstname());
-		assertEquals("name ungleich", "Rahn", driver.getName());
+		assertThat("id ungleich", driver.getId(), is(0L));
+		assertThat("firstname ungleich", driver.getFirstname(), is("Martin"));
+		assertThat("name ungleich", driver.getName(), is("Rahn"));
 	}
 
 	/**
@@ -127,7 +130,7 @@ public class DriverDAOTest {
 		driverDAO.remove(0L);
 
 		List<Driver> drivers = driverDAO.findAll();
-		assertEquals("Anzahl der Treffer ungleich", 0, drivers.size());
+		assertThat("Anzahl der Treffer ungleich", drivers.size(), is(0));
 	}
 
 }
