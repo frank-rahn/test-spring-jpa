@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>Test Spring JPA</name>
   <description>Test Spring mit JPA</description>
-  <url>https://github.com/frank-rahn/test-spring-jpa/tree/develop-spring-mit-einer-webanwendung-mit-jpa-und-validierung</url>
+  <url>https://github.com/frank-rahn/test-spring-jpa/tree/develop-spring-security-mit-einer-webanwendung</url>
 
   <organization>
   	<name>Frank W. Rahn</name>
@@ -13,7 +13,7 @@
   </organization>
 
   <scm>
-  	<url>https://github.com/frank-rahn/test-spring-jpa/tree/develop-spring-mit-einer-webanwendung-mit-jpa-und-validierung</url>
+  	<url>https://github.com/frank-rahn/test-spring-jpa/tree/develop-spring-security-mit-einer-webanwendung</url>
   	<connection>scm:git:git://github.com/frank-rahn/test-spring-jpa.git</connection>
   	<developerConnection>scm:git:git@github.com:frank-rahn/test-spring-jpa.git</developerConnection>
   </scm>
