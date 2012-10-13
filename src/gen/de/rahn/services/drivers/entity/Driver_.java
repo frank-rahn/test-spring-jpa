@@ -5,7 +5,7 @@ import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor", date = "2012-10-13T20:09:02.095+0200")
+@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor", date = "2012-10-13T20:14:45.055+0200")
 @SuppressWarnings("all")
 @StaticMetamodel(Driver.class)
 public abstract class Driver_ {
