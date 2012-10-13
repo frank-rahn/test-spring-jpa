@@ -96,7 +96,6 @@ public class StandardDrivers implements Drivers {
 	 * @see Drivers#deleteDriver(Long)
 	 */
 	@Override
-	@Transactional
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public void deleteDriver(Long id) {
 		driverDAO.remove(id);
