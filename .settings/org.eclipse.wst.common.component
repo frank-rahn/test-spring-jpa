@@ -2,6 +2,5 @@
     <wb-module deploy-name="test-spring-jpa">
         <wb-resource deploy-path="/" source-path="/src/java"/>
         <wb-resource deploy-path="/" source-path="/src/gen"/>
-        <wb-resource deploy-path="/" source-path="/src/test"/>
     </wb-module>
 </project-modules>
