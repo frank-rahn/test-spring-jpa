@@ -9,4 +9,3 @@ package de.rahn.services.drivers.entity;
 import static javax.xml.bind.annotation.XmlNsForm.QUALIFIED;
 
 import javax.xml.bind.annotation.XmlSchema;
-
