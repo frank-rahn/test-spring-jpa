@@ -1,8 +1,9 @@
 package de.rahn.services.drivers.standard;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,9 +41,9 @@ public class StandardDriversTest {
 	@Test
 	public void testGetDriver() {
 		Driver driver = drivers.getDriver(0L);
-		assertEquals("id ungleich", new Long(0), driver.getId());
-		assertEquals("firstname ungleich", "Martin", driver.getFirstname());
-		assertEquals("name ungleich", "Rahn", driver.getName());
+		assertThat("id ungleich", driver.getId(), is(0L));
+		assertThat("firstname ungleich", driver.getFirstname(), is("Martin"));
+		assertThat("name ungleich", driver.getName(), is("Rahn"));
 	}
 
 	/**
@@ -51,13 +52,13 @@ public class StandardDriversTest {
 	@Test
 	public void testCreateDriver() {
 		Long id = drivers.createDriver("Rahn", "Frank");
-		assertNotNull("keine id geliefert", id);
+		assertThat("keine id geliefert", id, notNullValue());
 
 		Driver driver = drivers.getDriver(id);
-		assertNotNull("doch nicht gespeichert", driver);
-		assertEquals("ungleiche id", id, driver.getId());
-		assertEquals("firstname ungleich", "Frank", driver.getFirstname());
-		assertEquals("name ungleich", "Rahn", driver.getName());
+		assertThat("doch nicht gespeichert", driver, notNullValue());
+		assertThat("ungleiche id", driver.getId(), is(id));
+		assertThat("firstname ungleich", driver.getFirstname(), is("Frank"));
+		assertThat("name ungleich", driver.getName(), is("Rahn"));
 	}
 
 	/**
@@ -69,14 +70,15 @@ public class StandardDriversTest {
 		car.setId(CAR_ID);
 		car.setType(CAR_TYPE);
 		Driver driver = drivers.addCarToDriver(0L, car);
-		assertNotNull("doch nicht gespeichert", driver);
-		assertEquals("id ungleich", new Long(0), driver.getId());
-		assertEquals("firstname ungleich", "Martin", driver.getFirstname());
-		assertEquals("name ungleich", "Rahn", driver.getName());
-		assertFalse("anzahl cars ungleich", driver.getCars().isEmpty());
+		assertThat("doch nicht gespeichert", driver, notNullValue());
+		assertThat("id ungleich", driver.getId(), is(0L));
+		assertThat("firstname ungleich", driver.getFirstname(), is("Martin"));
+		assertThat("name ungleich", driver.getName(), is("Rahn"));
+		assertThat("anzahl Autos ungleich", driver.getCars().isEmpty(),
+			not(true));
 		car = driver.getCars().iterator().next();
-		assertEquals("id ungleich", CAR_ID, car.getId());
-		assertEquals("type ungleich", CAR_TYPE, car.getType());
+		assertThat("id ungleich", car.getId(), is(CAR_ID));
+		assertThat("type ungleich", car.getType(), is(CAR_TYPE));
 	}
 
 }
