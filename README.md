@@ -1,5 +1,5 @@
-test-spring-simple
-==================
+test-spring-jpa
+===============
 
 Zugehöriger Artikel [Spring Security mit einer Webanwendung](http://www.frank-rahn.de/spring-security-mit-einer-webanwendung.html "Spring Security mit einer Webanwendung bei Frank Rahn") bei [Frank Rahn](http://www.frank-rahn.de "Homepage von Frank Rahn").
 
