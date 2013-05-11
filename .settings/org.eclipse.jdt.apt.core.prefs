@@ -1,9 +1,0 @@
-#Sun May 01 15:46:12 CEST 2011
-eclipse.preferences.version=1
-org.eclipse.jdt.apt.aptEnabled=true
-org.eclipse.jdt.apt.processorOptions/addGeneratedAnnotation=true
-org.eclipse.jdt.apt.processorOptions/addGenerationDate=true
-org.eclipse.jdt.apt.processorOptions/addSuppressWarningsAnnotation=true
-org.eclipse.jdt.apt.genSrcDir=src/gen
-org.eclipse.jdt.apt.processorOptions/debug=true
-org.eclipse.jdt.apt.reconcileEnabled=true

@@ -48,6 +48,7 @@ public class DriverDAOTest {
 	@Test
 	public void testFindAll() {
 		List<Driver> drivers = driverDAO.findAll();
+		assertThat("keine Ergebnis geliefert", drivers, notNullValue());
 		assertThat("Anzahl der Treffer ungleich", drivers.size(), is(1));
 
 		Driver driver = drivers.get(0);
@@ -116,6 +117,7 @@ public class DriverDAOTest {
 	@Test
 	public void testFindByPrimaryKey() {
 		Driver driver = driverDAO.findByPrimaryKey(0L);
+		assertThat("keine Ergebnis geliefert", driver, notNullValue());
 		assertThat("id ungleich", driver.getId(), is(0L));
 		assertThat("firstname ungleich", driver.getFirstname(), is("Martin"));
 		assertThat("name ungleich", driver.getName(), is("Rahn"));
@@ -130,6 +132,7 @@ public class DriverDAOTest {
 		driverDAO.remove(0L);
 
 		List<Driver> drivers = driverDAO.findAll();
+		assertThat("keine Ergebnis geliefert", drivers, notNullValue());
 		assertThat("Anzahl der Treffer ungleich", drivers.size(), is(0));
 	}
 
