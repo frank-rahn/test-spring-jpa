@@ -107,8 +107,6 @@
   </dependencies>
 
   <build>
-    <finalName>${project.artifactId}</finalName>
-
     <sourceDirectory>${basedir}/src/java</sourceDirectory>
     <testSourceDirectory>${basedir}/src/test</testSourceDirectory>
     <resources>
