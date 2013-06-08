@@ -136,4 +136,19 @@ public class DriverDAOTest {
 		assertThat("Anzahl der Treffer ungleich", drivers.size(), is(0));
 	}
 
+	/**
+	 * Test der Criteria API.
+	 */
+	@Test
+	public void testCriteriaAPI() {
+		List<Driver> drivers = driverDAO.findByName("Rahn");
+		assertThat("keine Ergebnis geliefert", drivers, notNullValue());
+		assertThat("Anzahl der Treffer ungleich", drivers.size(), is(1));
+
+		Driver driver = drivers.get(0);
+		assertThat("id ungleich", driver.getId(), is(0L));
+		assertThat("firstname ungleich", driver.getFirstname(), is("Martin"));
+		assertThat("name ungleich", driver.getName(), is("Rahn"));
+	}
+
 }

@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import de.rahn.db.dao.AbstractGenericDAO;
 import de.rahn.db.dao.GenericDAO;
@@ -64,6 +68,31 @@ public abstract class AbstractGenericJpaDAO<Entity, PrimaryKey extends Serializa
 	@Override
 	public Entity findByPrimaryKey(PrimaryKey key) {
 		return entityManager.find(entityClass, key);
+	}
+
+	/**
+	 * Erzeuge über die Criteria API eine JPA Query.
+	 * @param template der Builder
+	 * @return eine ausführbare JPA Query
+	 */
+	protected TypedQuery<Entity> buildQuery(
+		CriteriaQueryTemplate<Entity> template) {
+
+		// Erzeuge eine Builder
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+
+		// Erzeuge die Query
+		CriteriaQuery<Entity> criteriaQuery =
+			criteriaBuilder.createQuery(entityClass);
+
+		// Erzeuge die Referenz zur Hauptentität
+		Root<Entity> rootEntity = criteriaQuery.from(entityClass);
+
+		// Führe den Build durch
+		template.doBuild(criteriaBuilder, criteriaQuery, rootEntity);
+
+		// Erzeuge eine ausführbare JPA Query
+		return entityManager.createQuery(criteriaQuery);
 	}
 
 }
