@@ -41,6 +41,7 @@ public class StandardDriversTest {
 	@Test
 	public void testGetDriver() {
 		Driver driver = drivers.getDriver(0L);
+		assertThat("kein Fahrer geliefert", driver, notNullValue());
 		assertThat("id ungleich", driver.getId(), is(0L));
 		assertThat("firstname ungleich", driver.getFirstname(), is("Martin"));
 		assertThat("name ungleich", driver.getName(), is("Rahn"));

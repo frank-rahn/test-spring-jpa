@@ -19,9 +19,19 @@
   </scm>
 
   <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+  	<java-version>1.7</java-version>
   	<spring-version>3.1.2.RELEASE</spring-version>
   	<aspectj-version>1.7.0</aspectj-version>
+  	<cglib-version>2.2.2</cglib-version>
+  	<hibernate-version>4.1.7.Final</hibernate-version>
+  	<hibernate-validator-version>4.3.0.Final</hibernate-validator-version>
+  	<hibernate-jpamodelgen-version>1.2.0.Final</hibernate-jpamodelgen-version>
   	<slf4j-version>1.7.1</slf4j-version>
+  	<hsqldb-version>2.2.8</hsqldb-version>
+  	<hamcrest-version>1.1</hamcrest-version>
+  	<junit-version>4.10</junit-version>
   </properties>
 
   <dependencies>
@@ -121,29 +131,23 @@
   	<dependency>
   		<groupId>cglib</groupId>
   		<artifactId>cglib</artifactId>
-  		<version>2.2.2</version>
+  		<version>${cglib-version}</version>
   	</dependency>
   	<dependency>
   		<groupId>org.hibernate</groupId>
   		<artifactId>hibernate-entitymanager</artifactId>
-  		<version>4.1.7.Final</version>
+  		<version>${hibernate-version}</version>
   	</dependency>
   	<dependency>
   		<groupId>org.hibernate</groupId>
   		<artifactId>hibernate-validator</artifactId>
-  		<version>4.3.0.Final</version>
+  		<version>${hibernate-validator-version}</version>
   		<exclusions>
   			<exclusion>
   				<artifactId>jboss-logging</artifactId>
   				<groupId>org.jboss.logging</groupId>
   			</exclusion>
   		</exclusions>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.hibernate</groupId>
-  		<artifactId>hibernate-jpamodelgen</artifactId>
-  		<version>1.2.0.Final</version>
-  		<scope>test</scope>
   	</dependency>
   	<dependency>
   		<groupId>org.slf4j</groupId>
@@ -158,18 +162,18 @@
   	<dependency>
   		<groupId>org.hsqldb</groupId>
   		<artifactId>hsqldb</artifactId>
-  		<version>2.2.8</version>
+  		<version>${hsqldb-version}</version>
   	</dependency>
 	<dependency>
 		<groupId>org.hamcrest</groupId>
 		<artifactId>hamcrest-library</artifactId>
-		<version>1.1</version>
+		<version>${hamcrest-version}</version>
 		<scope>test</scope>
 	</dependency>
   	<dependency>
   		<groupId>junit</groupId>
   		<artifactId>junit</artifactId>
-  		<version>4.10</version>
+  		<version>${junit-version}</version>
   		<scope>test</scope>
   		<exclusions>
   			<exclusion>
@@ -179,5 +183,116 @@
   		</exclusions>
   	</dependency>
   </dependencies>
+
+  <build>
+    <sourceDirectory>${basedir}/src/java</sourceDirectory>
+    <testSourceDirectory>${basedir}/src/test</testSourceDirectory>
+    <resources>
+    	<resource>
+    		<directory>${basedir}/src/java</directory>
+    		<excludes>
+    			<exclude>**/*.java</exclude>
+    		</excludes>
+    	</resource>
+    </resources>
+    <testResources>
+    	<testResource>
+    		<directory>${basedir}/src/test</directory>
+    		<excludes>
+    			<exclude>**/*.java</exclude>
+    		</excludes>
+    	</testResource>
+    </testResources>
+
+    <pluginManagement>
+    	<plugins>
+	  		<plugin>
+			    <artifactId>maven-compiler-plugin</artifactId>
+			    <configuration>
+			        <source>${java-version}</source>
+			        <target>${java-version}</target>
+			    </configuration>
+			</plugin>
+
+	  		<plugin>
+	  			<artifactId>maven-eclipse-plugin</artifactId>
+	  			<configuration>
+	  				<downloadSources>true</downloadSources>
+	  				<downloadJavadocs>true</downloadJavadocs>
+	  			</configuration>
+	  		</plugin>
+
+	  		<plugin>
+	  			<groupId>org.apache.maven.plugins</groupId>
+	  			<artifactId>maven-jar-plugin</artifactId>
+	  			<version>2.4</version>
+	  			<configuration>
+	  				<archive>
+	  					<manifest>
+	  						<addClasspath>true</addClasspath>
+	  						<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+	  						<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+	  						<classpathPrefix>${env.HOME}/.m2/repository/</classpathPrefix>
+	  						<classpathLayoutType>repository</classpathLayoutType>
+	  					</manifest>
+	  				</archive>
+	  			</configuration>
+	  		</plugin>
+    	</plugins>
+    </pluginManagement>
+
+    <plugins>
+    	<plugin>
+  			<groupId>org.bsc.maven</groupId>
+  			<artifactId>maven-processor-plugin</artifactId>
+  			<version>2.2.1</version>
+  			<executions>
+  				<execution>
+  					<goals>
+  						<goal>process</goal>
+  					</goals>
+  				</execution>
+  			</executions>
+  			<configuration>
+  				<optionMap>
+					<addGeneratedAnnotation>true</addGeneratedAnnotation>
+					<addSuppressWarningsAnnotation>true</addSuppressWarningsAnnotation>
+					<debug>true</debug>
+				</optionMap>
+  				<processors>
+  					<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+  				</processors>
+  			</configuration>
+		    <dependencies>
+			    <dependency>
+					<groupId>org.hibernate</groupId>
+					<artifactId>hibernate-jpamodelgen</artifactId>
+					<version>${hibernate-jpamodelgen-version}</version>
+			    </dependency>
+		    </dependencies>
+  		</plugin>
+
+    	<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-jar-plugin</artifactId>
+  			<configuration>
+  				<archive>
+  					<manifest>
+  						<mainClass>Starter</mainClass>
+  					</manifest>
+  				</archive>
+  			</configuration>
+    	</plugin>
+
+    	<plugin>
+    		<groupId>org.codehaus.mojo</groupId>
+    		<artifactId>exec-maven-plugin</artifactId>
+    		<version>1.2.1</version>
+    		<configuration>
+    			<mainClass>Starter</mainClass>
+    		</configuration>
+    	</plugin>
+    </plugins>
+  </build>
 
 </project>
