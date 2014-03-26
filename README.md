@@ -8,3 +8,13 @@ Zugehörige Artikel:
 * [Spring mit RESTful Webservice](http://www.frank-rahn.de/spring-mit-restful-webservice.html "Spring mit RESTful Webservice bei Frank Rahn") bei [Frank Rahn](http://www.frank-rahn.de "Homepage von Frank Rahn").
 
 Weitere Artikel der Serie [Einführung in das Spring Framework](http://www.frank-rahn.de/einfuehrung-spring-framework.html "Einführung in das Spring Framework bei Frank Rahn").
+
+Continuous Integration
+----------------------
+Dieses Projekt wird automatisiert mit [Jenkins](http://jenkins-ci.org/) gebaut. 
+
+[![Status dieses Projekts](https://buildhive.cloudbees.com/job/frank-rahn/job/test-spring-jpa
+/badge/icon)](https://buildhive.cloudbees.com/job/frank-rahn/job/test-spring-jpa
+/)
+
+Es wird der Hosting-Dienst [BuildHive](https://buildhive.cloudbees.com/) von [CloudBees](http://www.cloudbees.com/) verwendet.
