@@ -13,8 +13,6 @@ Continuous Integration
 ----------------------
 Dieses Projekt wird automatisiert mit [Jenkins](http://jenkins-ci.org/) gebaut. 
 
-[![Status dieses Projekts](https://buildhive.cloudbees.com/job/frank-rahn/job/test-spring-jpa
-/badge/icon)](https://buildhive.cloudbees.com/job/frank-rahn/job/test-spring-jpa
-/)
+[![Status dieses Projekts](https://buildhive.cloudbees.com/job/frank-rahn/job/test-spring-jpa/badge/icon)](https://buildhive.cloudbees.com/job/frank-rahn/job/test-spring-jpa/)
 
 Es wird der Hosting-Dienst [BuildHive](https://buildhive.cloudbees.com/) von [CloudBees](http://www.cloudbees.com/) verwendet.
