@@ -12,8 +12,6 @@ Eclipse Konfiguration neu erzeugen: `$ mvn eclipse:clean eclipse:eclipse`
 
 Anwendung bauen: `$ mvn clean package`
 
-Anwendung ausführen: `$ mvn initialize exec:exec`
-
 Continuous Integration
 ----------------------
 [![Build Status](https://travis-ci.org/frank-rahn/test-spring-jpa.svg)](https://travis-ci.org/frank-rahn/test-spring-jpa)
