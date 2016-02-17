@@ -52,6 +52,12 @@
   		<scope>test</scope>
   	</dependency>
   	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-instrument</artifactId>
+  		<version>${spring-version}</version>
+  		<scope>test</scope>
+  	</dependency>
+  	<dependency>
   		<groupId>org.aspectj</groupId>
   		<artifactId>aspectjweaver</artifactId>
   		<version>${aspectj-version}</version>
@@ -206,12 +212,29 @@
   			</configuration>
     	</plugin>
 
+		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-dependency-plugin</artifactId>
+		    <executions>
+		        <execution>
+		            <goals>
+		                <goal>properties</goal>
+		            </goals>
+		        </execution>
+		     </executions>
+		</plugin>
     	<plugin>
     		<groupId>org.codehaus.mojo</groupId>
     		<artifactId>exec-maven-plugin</artifactId>
     		<version>1.2.1</version>
     		<configuration>
-    			<mainClass>Starter</mainClass>
+    			<executable>java</executable>
+    			<arguments>
+    				<argument>-javaagent:${org.springframework:spring-instrument:jar}</argument>
+    				<argument>-classpath</argument>
+					<classpath/>
+    				<argument>Starter</argument>
+    			</arguments>
     		</configuration>
     	</plugin>
     </plugins>
